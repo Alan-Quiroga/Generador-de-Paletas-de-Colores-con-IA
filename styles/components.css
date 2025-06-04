@@ -1,0 +1,111 @@
+/* Encabezado */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+/* Controles */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+input[type="color"] {
+  width: 80px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* Swatches de color */
+.color-swatch {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  position: relative;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.color-swatch span {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Simulaciones */
+.sim-text, .sim-shape {
+  flex: 1 1 200px;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.palette-block {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.palette-block:nth-child(1) { animation-delay: 0.1s; }
+.palette-block:nth-child(2) { animation-delay: 0.2s; }
+/* ... continuar con los delays ... */

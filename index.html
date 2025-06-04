@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generador Avanzado de Paletas</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+</head>
+<body>
+  <main>
+    <h1>🎨 Generador de Paletas Óptimas</h1>
+    <label for="colorInput">Color principal:</label>
+    <input type="color" id="colorInput" value="#3498db" />
+    <button id="generateBtn">Generar Paleta Óptima</button>
+    
+    <section id="results">
+      <div class="palette-container">
+        <h2>Mejor Paleta Generada</h2>
+        <div id="bestPalette"></div>
+      </div>
+      
+      <div class="backgrounds-container">
+        <h2>Fondos Óptimos (90-100% compatibilidad)</h2>
+        <div id="bestBackgrounds"></div>
+      </div>
+    </section>
+
+    <section id="extraPalettes">
+  <h2>Otras combinaciones inteligentes</h2>
+  <div id="analogousPalette"></div>
+  <div id="complementaryPalette"></div>
+  <div id="monochromePalette"></div>
+  <div id="pastelPalette"></div>
+  <div id="triadicPalette"></div>
+  <div id="tetradicPalette"></div>
+  <div id="splitComplementaryPalette"></div>
+</section>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
