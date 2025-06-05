@@ -9,37 +9,54 @@
   <link rel="stylesheet" href="styles/utilities.css">
 </head>
 <body>
-  <main>
-    <h1>🎨 Generador de Paletas Óptimas</h1>
-    <label for="colorInput">Color principal:</label>
-    <input type="color" id="colorInput" value="#3498db" />
-    <button id="generateBtn">Generar Paleta Óptima</button>
-    
-    <section id="results">
-      <div class="palette-container">
-        <h2>Mejor Paleta Generada</h2>
-        <div id="bestPalette"></div>
+  <main class="main-grid">
+    <!-- Columna izquierda - Controles -->
+    <div class="controls-column">
+      <h1>Crea paletas de colores perfectas</h1>
+      
+      <div class="color-selector-container">
+        <label>Selector de color:</label>
+        <div id="iro-color-picker"></div>
+        
+        <div class="hex-input-container">
+          <label for="hexInput">Color hexadecimal:</label>
+          <input type="text" id="hexInput" value="#3498db" maxlength="7" />
+          <span class="hex-label">HEX</span>
+          <div class="color-preview" id="colorPreview"></div>
+        </div>
       </div>
       
-      <div class="backgrounds-container">
-        <h2>Fondos Óptimos (90-100% compatibilidad)</h2>
-        <div id="bestBackgrounds"></div>
-      </div>
-    </section>
+      <button id="generateBtn">Generar Paleta Óptima</button>
+    </div>
 
-    <section id="extraPalettes">
-  <h2>Otras combinaciones inteligentes</h2>
-  <div id="analogousPalette"></div>
-  <div id="complementaryPalette"></div>
-  <div id="monochromePalette"></div>
-  <div id="pastelPalette"></div>
-  <div id="triadicPalette"></div>
-  <div id="tetradicPalette"></div>
-  <div id="splitComplementaryPalette"></div>
-</section>
+    <!-- Columna derecha - Resultados -->
+    <div class="results-column">
+      <section id="results">
+        <div class="palette-container">
+          <h2>Mejor Paleta Generada</h2>
+          <div id="bestPalette"></div>
+        </div>
+        
+        <div class="backgrounds-container">
+          <h2>Fondos Óptimos</h2>
+          <div id="bestBackgrounds"></div>
+        </div>
+      </section>
 
+      <section id="extraPalettes">
+        <h2>Otras combinaciones inteligentes</h2>
+        <div id="analogousPalette"></div>
+        <div id="complementaryPalette"></div>
+        <div id="monochromePalette"></div>
+        <div id="pastelPalette"></div>
+        <div id="triadicPalette"></div>
+        <div id="tetradicPalette"></div>
+        <div id="splitComplementaryPalette"></div>
+      </section>
+    </div>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5.5.2/dist/iro.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

@@ -108,4 +108,117 @@ button:hover {
 
 .palette-block:nth-child(1) { animation-delay: 0.1s; }
 .palette-block:nth-child(2) { animation-delay: 0.2s; }
-/* ... continuar con los delays ... */
+
+
+/* Selector de color mejorado */
+.color-selector-container {
+  margin-bottom: 2rem;
+}
+
+.hex-input-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#hexInput {
+  padding: 0.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 100px;
+  font-family: monospace;
+}
+
+.hex-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.color-preview {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Estilos para el selector iro.js */
+#iro-color-picker {
+  margin: 1rem 0;
+}
+
+/* Ajustes para el contenedor del selector */
+.color-selector-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+/* Ajustes para el input HEX */
+.hex-input-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#hexInput {
+  padding: 0.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 100px;
+  font-family: monospace;
+}
+
+.hex-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.color-preview {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Estilos para los contenedores de paleta */
+#bestPalette, #analogousPalette, #complementaryPalette, 
+#monochromePalette, #pastelPalette, #triadicPalette,
+#tetradicPalette, #splitComplementaryPalette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Mejorar el estilo de los swatches */
+.color-swatch {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.color-swatch span {
+  position: relative;
+  bottom: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.7rem;
+}

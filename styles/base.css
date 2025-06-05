@@ -1,15 +1,22 @@
 :root {
+  /* Colores base */
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
-  --dark-color: #2c3e50;
-  --light-color: #ecf0f1;
-  --background-color: #f8f9fa;
-  --text-color: #333;
-  --border-color: #ddd;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  /* Tema oscuro */
+  --dark-color: #ecf0f1;          /* Texto claro */
+  --light-color: #2c3e50;         /* Fondos oscuros */
+  --background-color: #1a1a1a;    /* Fondo más oscuro */
+  --text-color: #e0e0e0;          /* Texto principal */
+  --border-color: #444;           /* Bordes más suaves */
+  --shadow-color: rgba(0, 0, 0, 0.3); /* Sombras más intensas */
+  
+  /* Colores de estado */
   --success-color: #27ae60;
   --warning-color: #f39c12;
   --danger-color: #e74c3c;
+  
+  /* Variables de diseño */
   --border-radius: 8px;
   --transition-speed: 0.3s;
 }
@@ -41,8 +48,13 @@ h1, h2, h3 {
 button {
   cursor: pointer;
   transition: all var(--transition-speed) ease;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 input, button, select {
   font-size: 1rem;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  border-color: var(--border-color);
 }

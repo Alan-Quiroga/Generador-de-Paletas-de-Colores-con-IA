@@ -1,8 +1,57 @@
-document.getElementById('generateBtn').addEventListener('click', () => {
-  const color = document.getElementById('colorInput').value;
-  generarPaletaCompleta(color);
+// Al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  const hexInput = document.getElementById('hexInput');
+  const colorPreview = document.getElementById('colorPreview');
+  const generateBtn = document.getElementById('generateBtn');
+
+  // Inicializar el selector de color iro.js
+  const colorPicker = new iro.ColorPicker('#iro-color-picker', {
+    width: 180,
+    color: "#3498db",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    layout: [
+      { 
+        component: iro.ui.Wheel,
+        options: {}
+      },
+      { 
+        component: iro.ui.Slider,
+        options: {
+          sliderType: 'hue' // puedes cambiar a 'saturation' o 'value' según prefieras
+        }
+      }
+    ]
+  });
+
+  // Actualizar campo HEX y vista previa cuando cambia el color
+  colorPicker.on('color:change', (color) => {
+    hexInput.value = color.hexString;
+    colorPreview.style.backgroundColor = color.hexString;
+  });
+
+  // Actualizar el selector cuando se escribe en el campo HEX
+  hexInput.addEventListener('input', () => {
+    const hexValue = hexInput.value;
+    if (/^#[0-9A-F]{6}$/i.test(hexValue)) {
+      colorPicker.color.hexString = hexValue;
+      colorPreview.style.backgroundColor = hexValue;
+    }
+  });
+
+  // Mostrar el color inicial
+  colorPreview.style.backgroundColor = colorPicker.color.hexString;
 });
 
+// Modificar el evento del botón para usar el valor del campo HEX
+document.getElementById('generateBtn').addEventListener('click', () => {
+  const color = document.getElementById('hexInput').value;
+  if (/^#[0-9A-F]{6}$/i.test(color)) {
+    generarPaletaCompleta(color);
+  } else {
+    alert('Por favor ingresa un código HEX válido (ej. #3498db)');
+  }
+});
 function generarPaletaCompleta(baseColor) {
   const bestPalette = generarPaletaIA(baseColor);
   mostrarPaleta(bestPalette, 'bestPalette');
