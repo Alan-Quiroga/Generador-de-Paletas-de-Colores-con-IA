@@ -54,18 +54,32 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 });
 function generarPaletaCompleta(baseColor) {
   const bestPalette = generarPaletaIA(baseColor);
-  mostrarPaleta(bestPalette, 'bestPalette');
+  mostrarPaleta(bestPalette, 'bestPalette', 'Mejor Paleta Generada');
 
   const fondos = sugerirFondos(bestPalette);
-  mostrarFondos(fondos, 'bestBackgrounds', baseColor);
+  mostrarPaleta(fondos, 'bestBackgrounds', 'Fondos Óptimos');
 
-  mostrarPaleta(generarAnalogos(baseColor), 'analogousPalette', 'Análogos');
-  mostrarPaleta(generarComplementarios(baseColor), 'complementaryPalette', 'Complementarios');
-  mostrarPaleta(generarMonocromatica(baseColor), 'monochromePalette', 'Monocromáticos');
-  mostrarPaleta(generarPasteles(baseColor), 'pastelPalette', 'Pasteles');
-  mostrarPaleta(generarTriadicos(baseColor), 'triadicPalette', 'Triádicos');
-  mostrarPaleta(generarTetradicos(baseColor), 'tetradicPalette', 'Tetrádicos');
-  mostrarPaleta(generarSplitComplementarios(baseColor), 'splitComplementaryPalette', 'Split-Complementarios');
+  // Crear contenedores para cada tipo de paleta
+  const extraPalettes = document.getElementById('extraPalettes');
+  extraPalettes.innerHTML = '<h2>Otras combinaciones inteligentes</h2>';
+
+  const paletteTypes = [
+    { id: 'analogousPalette', name: 'Análogos', generator: generarAnalogos },
+    { id: 'complementaryPalette', name: 'Complementarios', generator: generarComplementarios },
+    { id: 'monochromePalette', name: 'Monocromáticos', generator: generarMonocromatica },
+    { id: 'pastelPalette', name: 'Pasteles', generator: generarPasteles },
+    { id: 'triadicPalette', name: 'Triádicos', generator: generarTriadicos },
+    { id: 'tetradicPalette', name: 'Tetrádicos', generator: generarTetradicos },
+    { id: 'splitComplementaryPalette', name: 'Split-Complementarios', generator: generarSplitComplementarios }
+  ];
+
+  paletteTypes.forEach(type => {
+    const group = document.createElement('div');
+    group.className = 'palette-group';
+    group.id = type.id;
+    extraPalettes.appendChild(group);
+    mostrarPaleta(type.generator(baseColor), type.id, type.name);
+  });
 }
 
 // ================= PALETA PRINCIPAL IA =================
@@ -171,19 +185,11 @@ function mostrarPaleta(colores, contenedorId, titulo = '') {
     contenedor.appendChild(h3);
   }
 
-  const roles = [
-    '🎨 Medio Tono',
-    '🌑 Sombra Intensa',
-    '🌘 Sombra Suave',
-    '💡 Luz',
-    '✨ Brillo'
-  ];
-
-  colores.forEach((color, i) => {
+  colores.forEach((color) => {
     const swatch = document.createElement('div');
     swatch.className = 'color-swatch palette-block';
     swatch.style.backgroundColor = color;
-    swatch.title = roles[i] || color;
+    swatch.title = color;
 
     const code = document.createElement('span');
     code.textContent = color;

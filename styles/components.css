@@ -112,7 +112,11 @@ button:hover {
 
 /* Selector de color mejorado */
 .color-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .hex-input-container {
@@ -146,7 +150,7 @@ button:hover {
 
 /* Estilos para el selector iro.js */
 #iro-color-picker {
-  margin: 1rem 0;
+  margin: 1rem auto; /* Centra el selector */
 }
 
 /* Ajustes para el contenedor del selector */
@@ -160,8 +164,10 @@ button:hover {
 .hex-input-container {
   display: flex;
   align-items: center;
+  justify-content: center; /* Centra el input HEX */
   gap: 0.5rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 #hexInput {
@@ -186,39 +192,11 @@ button:hover {
   box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-/* Estilos para los contenedores de paleta */
-#bestPalette, #analogousPalette, #complementaryPalette, 
-#monochromePalette, #pastelPalette, #triadicPalette,
-#tetradicPalette, #splitComplementaryPalette {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-/* Mejorar el estilo de los swatches */
-.color-swatch {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding-bottom: 0.5rem;
-  transition: transform 0.2s ease;
-}
-
-.color-swatch:hover {
-  transform: scale(1.05);
-  z-index: 1;
-}
-
-.color-swatch span {
-  position: relative;
-  bottom: auto;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  color: white;
-  font-size: 0.7rem;
+#generateBtn {
+  width: 80%; /* Ancho consistente */
+  max-width: 250px; /* Máximo ancho */
+  margin: 1.5rem auto 0; /* Centrado con margen superior */
+  padding: 1rem;
+  font-size: 1.1rem;
+  display: block; /* Para que funcione el margin auto */
 }
