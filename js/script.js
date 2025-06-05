@@ -1,38 +1,24 @@
-// Al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
   const hexInput = document.getElementById('hexInput');
   const colorPreview = document.getElementById('colorPreview');
-  const generateBtn = document.getElementById('generateBtn');
 
-  // Inicializar el selector de color iro.js
-  const colorPicker = new iro.ColorPicker('#iro-color-picker', {
-    width: 180,
-    color: "#3498db",
+  // Inicializar el selector de color iro.js con la nueva configuración
+  const colorPicker = new iro.ColorPicker(".colorPicker", {
+    width: 280,
+    color: "#3498db", // Color predefinido
     borderWidth: 1,
-    borderColor: "#ddd",
-    layout: [
-      { 
-        component: iro.ui.Wheel,
-        options: {}
-      },
-      { 
-        component: iro.ui.Slider,
-        options: {
-          sliderType: 'hue' // puedes cambiar a 'saturation' o 'value' según prefieras
-        }
-      }
-    ]
+    borderColor: "#fff",
   });
 
   // Actualizar campo HEX y vista previa cuando cambia el color
-  colorPicker.on('color:change', (color) => {
+  colorPicker.on(["color:init", "color:change"], function(color) {
     hexInput.value = color.hexString;
     colorPreview.style.backgroundColor = color.hexString;
   });
 
   // Actualizar el selector cuando se escribe en el campo HEX
-  hexInput.addEventListener('input', () => {
-    const hexValue = hexInput.value;
+  hexInput.addEventListener('input', function() {
+    const hexValue = this.value;
     if (/^#[0-9A-F]{6}$/i.test(hexValue)) {
       colorPicker.color.hexString = hexValue;
       colorPreview.style.backgroundColor = hexValue;
@@ -41,7 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mostrar el color inicial
   colorPreview.style.backgroundColor = colorPicker.color.hexString;
+  
+  // Generar la paleta automáticamente al cargar la página
+  generarPaletaCompleta("#3498db");
 });
+
 
 // Modificar el evento del botón para usar el valor del campo HEX
 document.getElementById('generateBtn').addEventListener('click', () => {
@@ -139,9 +129,9 @@ function generarMonocromatica(hex) {
 function generarPasteles(hex) {
   const hsl = hexToHSL(hex);
   return [
-    hslToHex(hsl.h, hsl.s * 0.3, 90),
-    hslToHex(hsl.h, hsl.s * 0.4, 85),
-    hslToHex(hsl.h, hsl.s * 0.2, 92)
+    hslToHex(hsl.h, Math.min(75, hsl.s * 0.8), 65),  // Pastel principal más oscuro
+    hslToHex((hsl.h + 15) % 360, Math.min(65, hsl.s * 0.7), 70),  // Versión media
+    hslToHex((hsl.h - 15 + 360) % 360, Math.min(85, hsl.s * 0.9), 60)  // Versión más saturada
   ];
 }
 

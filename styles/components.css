@@ -155,11 +155,9 @@ button:hover {
 
 /* Ajustes para el contenedor del selector */
 .color-selector-container {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
   margin-bottom: 2rem;
 }
-
 /* Ajustes para el input HEX */
 .hex-input-container {
   display: flex;
@@ -176,6 +174,14 @@ button:hover {
   border-radius: var(--border-radius);
   width: 100px;
   font-family: monospace;
+}
+
+.hex-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .hex-label {
@@ -199,4 +205,9 @@ button:hover {
   padding: 1rem;
   font-size: 1.1rem;
   display: block; /* Para que funcione el margin auto */
+}
+
+.colorPicker {
+  margin: 0 auto;
+  display: block;
 }
